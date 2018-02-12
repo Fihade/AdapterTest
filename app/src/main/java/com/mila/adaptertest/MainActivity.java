@@ -2,18 +2,21 @@ package com.mila.adaptertest;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener,AbsListView.OnScrollListener {
     private ListView lv;
     private ArrayAdapter<String>arr_Adapter;
     private SimpleAdapter sim_Adapter;
@@ -47,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
         //视图加载listview适配器
         //lv.setAdapter(arr_Adapter);
         lv.setAdapter(sim_Adapter);
+        lv.setOnItemClickListener(this);
+        lv.setOnScrollListener(this);
     }
 
     private List<Map<String,Object>> getData(){
@@ -58,5 +63,40 @@ public class MainActivity extends AppCompatActivity {
             dataList.add(map);
         }
         return dataList;
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        String text  = lv.getItemAtPosition(position)+"";
+        if(position == 2){
+        Toast.makeText(this,"当前position:" +position+"text:"+text,Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onScrollStateChanged(AbsListView view, int scrollState) {
+        Toast.makeText(this,"hhhhhh",Toast.LENGTH_SHORT).show();
+        switch(scrollState){
+            case SCROLL_STATE_FLING:
+                Log.i("Main","离开屏幕前划了一下");
+                Map<String,Object>map = new HashMap<String,Object>();
+                map.put("imageview",R.drawable.ic_launcher_background);
+                map.put("tv","列表号：");
+                map.put("tv1","hello*");
+                dataList.add(map);
+                sim_Adapter.notifyDataSetChanged();
+                break;
+            case SCROLL_STATE_IDLE:
+                Log.i("Main","停止滑动");
+            case SCROLL_STATE_TOUCH_SCROLL:
+                Log.i("hhh","未离开屏幕，仍在滑动");
+            break;
+        }
+
+    }
+
+    @Override
+    public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+
     }
 }
