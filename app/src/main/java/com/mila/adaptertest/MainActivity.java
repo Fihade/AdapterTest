@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 map.put("tv","列表号：");
                 map.put("tv1","hello*");
                 dataList.add(map);
-                sim_Adapter.notifyDataSetChanged();
+                sim_Adapter.notifyDataSetChanged();   //下拉刷新，通知UI线程去刷新
                 break;
             case SCROLL_STATE_IDLE:
                 Log.i("Main","停止滑动");
