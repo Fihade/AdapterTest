@@ -1,5 +1,6 @@
 package com.mila.adaptertest;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -69,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         String text  = lv.getItemAtPosition(position)+"";
         if(position == 2){
-        Toast.makeText(this,"当前position:" +position+"text:"+text,Toast.LENGTH_SHORT).show();
+            turn(view);
         }
     }
 
@@ -99,4 +100,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
 
     }
+
+    public  void turn(View view){
+        Intent intent = new Intent(MainActivity.this,CalenderTest.class);
+        startActivity(intent);
+    }
 }
+
+
