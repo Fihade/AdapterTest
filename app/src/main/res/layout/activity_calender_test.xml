@@ -9,15 +9,23 @@
 
     <TimePicker
         android:id="@+id/timePicker"
-        android:layout_width="349dp"
-        android:layout_height="332dp"
+        android:layout_width="164dp"
+        android:layout_height="134dp"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp" />
 
     <DatePicker
         android:id="@+id/datePicker"
-        android:layout_width="313dp"
-        android:layout_height="wrap_content"
+        android:layout_width="169dp"
+        android:layout_height="113dp"
         tools:layout_editor_absoluteX="18dp"
         tools:layout_editor_absoluteY="178dp" />
+
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="168dp"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        android:onClick="turn1"/>
+
 </LinearLayout>

@@ -2,8 +2,11 @@ package com.mila.adaptertest;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
@@ -19,6 +22,7 @@ public class CalenderTest extends AppCompatActivity {
     private int day;
     private int hour;
     private int minute;
+    private Button btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +39,8 @@ public class CalenderTest extends AppCompatActivity {
         setTitle(year + "-" + month + "-" + day  );
         datePicker = findViewById(R.id.datePicker);
         timerPicker = findViewById(R.id.timePicker);
+        //设置跳转
+        btn = findViewById(R.id.btn);
         //日期初始化
         datePicker.init(year, cal.get(Calendar.MONTH), day, new DatePicker.OnDateChangedListener() {
             @Override
@@ -65,5 +71,10 @@ public class CalenderTest extends AppCompatActivity {
         },hour,minute,true).show();
 
 
+    }
+
+    public void turn1(View view){
+        Intent intent = new Intent(this,GridViewTest.class);
+        startActivity(intent);
     }
 }
