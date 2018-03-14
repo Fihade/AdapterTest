@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private SimpleAdapter sim_Adapter;
     private List<Map<String,Object>>dataList;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
